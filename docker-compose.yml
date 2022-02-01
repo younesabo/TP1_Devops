@@ -1,0 +1,33 @@
+version : '3.7'
+services :
+  java :
+    build : 
+      context : ./backendapi/simple-api
+    container_name : java
+    networks :
+      - back-network
+    depends_on :
+      - "database"
+  pgsql :
+    build : 
+      context : ./database
+      args :
+        e: POSTGRES_PASSWORD=123
+    container_name : pgsql
+    volumes:
+      - /my/own/datadir:/var/lib/postgresql/data
+    networks :
+      - back-network
+  httpserver :
+    build : 
+      context : ./httpserver
+    container_name : httpd
+    ports :
+      - "80:80"
+    networks :
+      - back-network
+    depends_on :
+      - "backendapi"
+networks :
+  back-network:
+    driver: bridge
