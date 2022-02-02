@@ -34,6 +34,6 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Build and test with Maven
-        run: mvn clean verify --file .\TP1_Devops\backendapi\simple-api
+        run: mvn clean verify --file \\wsl$\Ubuntu-18.04\home\younes\TP1_Devops\backendapi\simple-api
           echo Add other actions to build,
           echo test, and deploy your project.
