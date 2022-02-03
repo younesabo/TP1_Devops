@@ -143,3 +143,6 @@ Pour lancer le playbook :
 
 En cas de problème on peut se connecter au serveur :
 ```sudo ssh -i /home/younes/TP1_Devops/ansible/inventories/id_rsa centos@younes.abouchi.takima.cloud```
+
+ou enlever l'host SSH :
+```ssh-keygen -R "younes.abouchi.takima.cloud"```
