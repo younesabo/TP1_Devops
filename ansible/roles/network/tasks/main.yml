@@ -1,0 +1,10 @@
+---
+# tasks file for roles/network
+- name: Run database
+  docker_network:
+    name: global_network
+    connected:
+      - java
+      - pgsql
+      - httpd
+    appends: yes

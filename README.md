@@ -79,11 +79,67 @@ Pour publier les images sur Docker Hub :
 ```$ docker push younesabo/tp1_httpserver```
 
 
-# Images Docker :
+## Images Docker :
 
 * https://hub.docker.com/repository/docker/younesabo/tp1_database
 * https://hub.docker.com/repository/docker/younesabo/tp1_httpserver
 * https://hub.docker.com/repository/docker/younesabo/tp1_backendapi
 
-# GitHub : 
+## GitHub : 
+
 * https://github.com/younesabo/TP1_Devops.git
+
+
+# TP2 Github/Sonar
+
+
+
+
+
+# Nouvelles Images Docker :
+
+* https://hub.docker.com/repository/docker/younesabo/pgsql
+* https://hub.docker.com/repository/docker/younesabo/httpserver
+* https://hub.docker.com/repository/docker/younesabo/java
+
+
+
+
+
+
+
+
+
+# TP3 Ansible
+
+
+## Tasks
+
+L'execution  d'un module Ansible est appelé une "task". Le module le plus simple est appelé "ping".
+Par exemple, le module "shell" permet d'executer une commande à distance.
+
+## Roles
+
+Les "roles" permettent de réutiliser les mêmes parties de code dans plusieurs playbooks.
+Les "roles" peuvent être executés à l'aide du playbook.
+
+## Playbook
+
+Le plan d'execution est écrit sous la forme d'un script appelé "playbook". 
+Le Playbook contient : 
+* a list (or group) of hosts that 'the play' is executed against
+* Les `tasks` ou `roles` qui vont être executés
+* des paramètres par défaut (comme des variables par défaut)
+
+Le langage du scipt Playbook est écrit en langage YAML.
+
+## Commandes
+
+Pour ping le serveur :
+```ansible all -i inventories/setup.yml -m ping```
+
+Pour lancer le playbook :
+```ansible-playbook -i inventories/setup.yml playbook.yml```
+
+En cas de problème on peut se connecter au serveur :
+```sudo ssh -i /home/younes/TP1_Devops/ansible/inventories/id_rsa centos@younes.abouchi.takima.cloud```
