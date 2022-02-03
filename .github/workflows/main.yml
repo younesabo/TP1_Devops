@@ -6,11 +6,11 @@ name: build-and-test-backend
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    branches: main
   pull_request:
-
+env:   
+  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
   # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -33,7 +33,11 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Build and test with Maven
-        run: mvn clean verify --file ./backendapi/simple-api
+        run: mvn -B verify sonar:sonar -Dsonar.projectKey=younesabo_TP1_Devops
+            -Dsonar.organization=devops-tp
+            -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{
+            secrets.SONAR_TOKEN }} --file ./backendapi/simple-api/pom.xml
+            
         
   
   
@@ -57,24 +61,24 @@ jobs:
           # relative path to the place where source code with Dockerfile is located
           context: ./backendapi/simple-api
           # Note: tags has to be all lower-case
-          tags: ${{secrets.DOCKERHUB_USERNAME}}/tp1_backendapi
+          tags: ${{secrets.DOCKERHUB_USERNAME}}/java
           push: ${{ github.ref == 'refs/heads/master' }}
 
       - name: Build image and push database
         uses: docker/build-push-action@v2
         with:
           # relative path to the place where source code with Dockerfile is located
-          context: ./bdd
+          context: ./database
           # Note: tags has to be all lower-case
-          tags: ${{secrets.DOCKERHUB_USERNAME}}/tp1_database
+          tags: ${{secrets.DOCKERHUB_USERNAME}}/pgsql
           push: ${{ github.ref == 'refs/heads/master' }}
 
       - name: Build image and push httpd
         uses: docker/build-push-action@v2
         with:
           # relative path to the place where source code with Dockerfile is located
-          context: ./http
+          context: ./httpserver
           # Note: tags has to be all lower-case
-          tags: ${{secrets.DOCKERHUB_USERNAME}}/tp1_httpserver
+          tags: ${{secrets.DOCKERHUB_USERNAME}}/httpserver
           push: ${{ github.ref == 'refs/heads/master' }} 
 
