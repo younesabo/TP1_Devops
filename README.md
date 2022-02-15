@@ -95,8 +95,8 @@ Pour publier les images sur Docker Hub :
 Les "testcontainers" sont des conteneurs executés pour les tests.
 
 Dans le main.yml :
-    - Utilisation d'un DOCKERHUB_USERNAME et d'un DOCKERHUB_TOKEN pour la connexion à Dockerhub
-    - Utilisation d'un SONAR_TOKEN pour la connexion à Sonar
+* Utilisation d'un DOCKERHUB_USERNAME et d'un DOCKERHUB_TOKEN pour la connexion à Dockerhub
+* Utilisation d'un SONAR_TOKEN pour la connexion à Sonar
 
 
 ## Nouvelles Images Docker :
