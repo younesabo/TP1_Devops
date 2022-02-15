@@ -92,7 +92,11 @@ Pour publier les images sur Docker Hub :
 
 # TP2 Github/Sonar
 
+Les "testcontainers" sont des conteneurs executés pour les tests.
 
+Dans le main.yml :
+    - Utilisation d'un DOCKERHUB_USERNAME et d'un DOCKERHUB_TOKEN pour la connexion à Dockerhub
+    - Utilisation d'un SONAR_TOKEN pour la connexion à Sonar
 
 
 ## Nouvelles Images Docker :
@@ -143,5 +147,7 @@ Pour lancer le playbook :
 En cas de problème on peut se connecter au serveur :
 ```sudo ssh -i /home/younes/TP1_Devops/ansible/inventories/id_rsa centos@younes.abouchi.takima.cloud```
 
-ou enlever l'host SSH :
+## Surprise
+
+Il faut enlever l'host SSH :
 ```ssh-keygen -R "younes.abouchi.takima.cloud"```
